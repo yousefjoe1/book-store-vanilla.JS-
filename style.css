@@ -1,0 +1,834 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: hsl(210, 95%, 77%, 0.2);
+}
+
+.container {
+  position: relative;
+}
+
+.books-header {
+  border-bottom: 2px solid black;
+  padding: 10px;
+  display: none;
+  text-align: center;
+}
+
+.books-header button {
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  background-color: rgb(59, 59, 83);
+  color: #e0c3fc;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 4px;
+  width: 200px;
+  margin: 3px auto;
+  transition: all 0.5s ease;
+}
+
+.books-header button:hover {
+  box-shadow: 1px 1px 2px rgb(100, 147, 163);
+  background-color: #ff3cac;
+  background-image: linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
+}
+
+.title {
+  background-color: hsl(348, 83%, 47%, 0.8);
+  /* text-align: center; */
+  color: whitesmoke;
+  padding: 5px;
+  display: inline;
+}
+
+.form input,
+.form label {
+  display: block;
+}
+
+.form {
+  position: relative;
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+  margin: 10px 15px;
+  padding: 10px;
+  text-align: center;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all 2s ease;
+  height: 10px;
+}
+
+.form-anime {
+  height: 450px;
+}
+
+.form label {
+  color: rgb(90, 59, 59);
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.close-add-form-btn {
+  position: absolute;
+  left: 3px;
+  top: 5px;
+}
+
+.form .add-book-btn {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+  border: none;
+  border-radius: 3px;
+  font-size: 19px;
+  font-weight: 600;
+  box-shadow: 2px 2px 2px rgb(100, 147, 163);
+  transition: all 0.5s ease;
+}
+
+.form .add-book-btn:hover {
+  background-color: #2c2c3d;
+  background-image: none;
+  color: rgb(179, 179, 233);
+  box-shadow: none;
+}
+
+.form .close-add-form-btn {
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 19px;
+  font-weight: 600;
+  background-color: hsl(348, 83%, 47%, 0.8);
+  color: white;
+}
+
+.form input {
+  width: 10%;
+  font-size: 25px;
+  margin: 5px;
+  padding: 5px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  transition: all 1s ease;
+}
+
+form .input-width-anime {
+  width: 60%;
+}
+
+/* add form media query */
+@media (max-width: 700px) {
+  .form {
+    margin: 10px 3px;
+  }
+
+  .form input {
+    width: 20%;
+    font-size: 18px;
+  }
+
+  .form .input-width-anime {
+    width: 100%;
+  }
+
+  .form .close-add-form-btn {
+    padding: 3px;
+  }
+}
+
+/*------------------------ Table ------------------------ */
+table {
+  border: 2px solid rgb(230, 123, 123);
+  border-radius: 5px;
+  width: 900px;
+  margin: 10px auto;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.hide-table {
+  display: none;
+}
+
+table thead tr td {
+  border: 1px solid firebrick;
+}
+table tbody tr td {
+  border: 1px solid firebrick;
+}
+
+@media (max-width: 910px) {
+  table {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  table thead tr {
+    display: flex;
+    justify-content: space-around;
+  }
+  table tbody tr {
+    display: flex;
+    justify-content: space-around;
+  }
+  table tbody tr td {
+    width: 100%;
+  }
+  table thead tr td {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  table tbody tr td {
+    font-size: 16px;
+  }
+  table thead tr td {
+    font-size: 16px;
+  }
+}
+
+.find-form {
+  position: relative;
+  /* background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%); */
+  background-image: radial-gradient(
+    circle 976px at 51.2% 51%,
+    rgba(11, 27, 103, 1) 0%,
+    rgba(16, 66, 157, 1) 0%,
+    rgba(11, 27, 103, 1) 17.3%,
+    rgba(11, 27, 103, 1) 58.8%,
+    rgba(11, 27, 103, 1) 71.4%,
+    rgba(16, 66, 157, 1) 100.2%,
+    rgba(187, 187, 187, 1) 100.2%
+  );
+  margin: 10px 15px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.find-form input {
+  width: 60%;
+  font-size: 25px;
+  margin: 5px;
+  padding: 5px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+}
+
+.find-form button {
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 15px;
+  font-weight: 600;
+  background: rgb(142, 188, 205);
+  background: linear-gradient(
+    90deg,
+    rgba(142, 188, 205, 1) 7%,
+    rgba(59, 44, 149, 1) 100%
+  );
+  color: whitesmoke;
+  transition: all 0.5s ease;
+}
+
+.find-form button:hover {
+  background-color: #3d3fcc;
+  background-image: linear-gradient(
+    45deg,
+    #3d3fcc 0%,
+    #35a8c8 52%,
+    #92b5a1 90%
+  );
+  background-image: none;
+}
+
+.sure-msg::before {
+  content: "Make Sure To Write Existing Value";
+  background-color: firebrick;
+  color: aliceblue;
+  position: absolute;
+  font-size: 15px;
+  font-weight: 600;
+  top: -10px;
+  left: 20px;
+  padding: 4px;
+  z-index: 100;
+  border-radius: 5px;
+  animation-name: swing;
+  animation-duration: 2s;
+  animation-timing-function: 2s;
+  animation-iteration-count: 1;
+}
+
+@keyframes swing {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(50deg);
+  }
+  75% {
+    transform: rotateY(-50deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+@media (max-width: 700px) {
+  .find-form {
+    margin: 10px 3px;
+  }
+
+  .find-form input {
+    width: 100%;
+    font-size: 4vw;
+    font-weight: bold;
+  }
+  .find-form button {
+    font-size: 14px;
+  }
+}
+
+.book-info {
+  background-color: lightblue;
+  width: 100%;
+  padding-top: 50px;
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  position: relative;
+}
+
+.book-info .hide-booksinfo-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.single-book {
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 3px;
+  font-size: 20px;
+  transition: all 2s ease;
+  transform: rotate3d(20, 20, 3, 100deg);
+}
+
+.book-anime {
+  transform: rotateY(360deg);
+}
+
+.hide-booksinfo-btn {
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 19px;
+  font-weight: 600;
+  background-color: hsl(348, 83%, 47%, 0.8);
+  color: white;
+}
+
+@media (max-width: 750px) {
+  .book-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.edit-btn {
+  cursor: pointer;
+  padding: 4px;
+  border: none;
+  border-radius: 3px;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: #726cf8;
+  background-image: linear-gradient(315deg, #726cf8 0%, #e975a8 74%);
+  color: white;
+  margin: 2px 10px;
+}
+.edit-btn-hidden {
+  display: none;
+}
+@media (max-width: 550px) {
+  .book-info {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .single-book {
+    font-size: 4vw;
+  }
+  .hide-booksinfo-btn {
+    font-size: 4vw;
+  }
+  .edit-btn {
+    font-size: 3vw;
+  }
+}
+
+.make-change-btn {
+  display: none;
+}
+
+.hide-form-btn {
+  display: none;
+}
+
+.show-change-btn {
+  display: block;
+  padding: 3px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  color: #dbedff;
+  transition: all 0.5s ease;
+  background-color: brown;
+  font-weight: bold;
+}
+
+.show-change-btn:hover {
+  background-color: #ff3c3c;
+  box-shadow: 1px 1px 4px #2c2c3d;
+}
+
+.warning-msg::before {
+  content: "You Can Not Change The Book Id";
+  top: 15px;
+  left: 30%;
+  background-color: #e63333;
+  padding: 3px;
+  color: white;
+  font-weight: 700;
+}
+
+.warning-msg::before {
+  animation-name: warning-msg;
+  animation-timing-function: 2s;
+  animation-duration: 2s;
+  animation-iteration-count: 2;
+}
+
+@keyframes warning-msg {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.valid-msg {
+  display: none;
+  position: absolute;
+  top: 60%;
+  left: 5px;
+  width: 200px;
+  background-color: brown;
+  color: aliceblue;
+  font-weight: 700;
+  border-radius: 5px;
+}
+
+.show-valid-search-msg {
+  display: block;
+}
+
+.id-is-there {
+  position: absolute;
+  top: 40px;
+  right: 30px;
+  display: none;
+}
+
+.id-exist-msg-active {
+  position: absolute;
+  top: 40px;
+  right: 30px;
+  display: block;
+  background-color: #e63333;
+  padding: 3px;
+  color: white;
+  font-size: 18px;
+}
+
+.add-form-validat-msg {
+  display: none;
+}
+
+.form-validat-msg-active {
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  background-color: #e63333;
+  padding: 3px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 4px;
+}
+
+.hide-search-form {
+  display: none;
+}
+
+.match-search-value {
+  display: none;
+}
+
+.match-search-value-active {
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  background-color: #e63333;
+  padding: 3px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 4px;
+}
+
+.buybtn {
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  background-color: #4c4177;
+  background-image: linear-gradient(315deg, #7453f8 0%, #38a8f3 74%);
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.reciet-div {
+  background-color: hsl(240, 16%, 21%, 0.7);
+  width: 100%;
+  height: 20vh;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 200;
+  transform: translateY(120px);
+  transition: all 1s ease;
+}
+
+.reciet-div-anime {
+  transform: translateY(0px);
+  height: 100vh;
+}
+
+.single-book-bay {
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  font-size: 20px;
+  box-shadow: 2px 2px 2px white, -2px -2px 3px whitesmoke;
+}
+
+.bay-form-container {
+  max-width: 500px;
+  background-color: #6a93cb;
+  background-image: linear-gradient(315deg, #6a93cb 0%, #a4bfef 74%);
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.buy-this {
+  background-color: #125d88;
+  padding: 5px 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  margin: 4px;
+}
+
+.confirme-book-info-msg {
+  background-color: #3b3b50;
+  color: whitesmoke;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.id0num-msg {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 30px;
+}
+
+.id0num-msg-active {
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  background-color: #e63333;
+  padding: 3px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 4px;
+}
+
+.id-future-msg {
+  background-color: rgb(59, 59, 83);
+  color: #8ec5fc;
+  padding: 5px;
+  width: 220px;
+  font-weight: bold;
+  border-radius: 3px;
+  display: none;
+  position: absolute;
+  top: -1px;
+  left: 10%;
+}
+
+.id-future-msg-anime {
+  animation-name: idfuturemsg;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+
+@keyframes idfuturemsg {
+  0% {
+    transform: rotateY(0deg);
+    width: 0px;
+  }
+  50% {
+    transform: rotateY(360deg);
+    width: 50px;
+  }
+  70% {
+    width: 50px;
+    transform: translateY(10px);
+  }
+
+  100% {
+    width: 220px;
+    transform: translateY(0px);
+  }
+}
+
+.id-future-msg-active {
+  display: block;
+}
+
+.final-info {
+  background-color: hsl(240, 16%, 21%, 0.9);
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 300;
+}
+
+.final-info-active {
+  display: block;
+}
+
+.bookinfo-to-proceed {
+  max-width: 500px;
+  background-color: rgb(62, 62, 87);
+  color: #8bdda6;
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 3px;
+  display: none;
+  margin: 50px auto;
+  border: 2px solid wheat;
+}
+
+.bookinfo-to-proceed-active {
+  display: block;
+}
+
+.go-home-btn {
+  position: absolute;
+  top: 10px;
+  right: 50%;
+  background-color: #e63333;
+  padding: 5px 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.go-home-reload {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  background-color: #e63333;
+  padding: 5px 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+/* -------------------------------------------------------------------- */
+
+.bookstore-container {
+  display: none;
+}
+
+/* ------------------Create Users Form----------------------- */
+.create-user-form {
+  position: relative;
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+  margin: 10px auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 5px;
+  max-width: 400px;
+  height: 40vh;
+}
+.create-user-form input {
+  width: 80%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 5px;
+}
+.create-user-form p {
+  padding: 10px;
+  margin-top: -15px;
+  font-weight: bold;
+}
+.create-user-form label {
+  font-size: 19px;
+  font-weight: bold;
+}
+.create-user-form button {
+  border: none;
+  background-color: floralwhite;
+  padding: 5px 10px;
+  color: rgb(40, 113, 247);
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 3px;
+  margin: 10px;
+}
+/* ----------------Create User Header---------------------- */
+.create-user-header {
+  background-color: #0093e9;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+.create-user-header button {
+  border: none;
+  background-color: floralwhite;
+  padding: 5px 10px;
+  color: rgb(40, 113, 247);
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 3px;
+  margin: 10px;
+}
+.create-user-header button:nth-child(1) {
+  color: rgb(59, 43, 43);
+  background-color: whitesmoke;
+}
+/* ------------------------------Log In Form-------------------------------- */
+.login-form {
+  position: relative;
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+  margin: 10px auto;
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 5px;
+  max-width: 400px;
+  height: 40vh;
+}
+.login-form p {
+  padding: 10px;
+  margin-top: -15px;
+  font-weight: bold;
+}
+.login-form label {
+  font-size: 19px;
+  font-weight: bold;
+}
+.login-form input {
+  width: 80%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.login-form button {
+  border: none;
+  color: rgb(59, 43, 43);
+  background-color: whitesmoke;
+  padding: 5px 10px;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 3px;
+  margin: 10px;
+}

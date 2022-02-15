@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Book store</title>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="create-user" id="create-user-container">
+
+            <header class="create-user-header">
+                <button class="nav-to-login" id="header-loginBtn">Log In</button>
+                <button class="nav-to-create-acc" id="header-create-accBtn">Create Account</button>
+            </header>
+
+            <form class="create-user-form" id="create-users-form" >
+                <p>Create Account</p>
+
+                <label for="user-name-cr-acc" class="username">Your Name</label>
+                <input type="text" id="user-name-cr-acc">
+                <label for="password-cr-acc" class="password">Your Passowrd</label>
+                <input type="password" id="password-cr-acc">
+
+                <button class="create-acc-btn" id="create-accnt-btn">Create Account</button>
+            </form>
+            <form class="login-form" id="log-in-form">
+                <p>Log In</p>
+
+                <label for="user-name-login" class="username">Your Name</label>
+                <input type="text" id="user-name-login">
+                <label for="user-name" class="password">Your Passowrd</label>
+                <input type="password" id="password-login">
+
+                <button class="login-button" id="login-btn">Log In</button>
+            </form>
+        </div>
+        
+        <div class="bookstore-container" id="store-container">
+
+            <header class="books-header" id="books-header">
+                <button class="add-form-btn" id="addForm-btn" >Add Books Form</button>
+            </header>
+
+            <form class="find-form" id="find-form">
+                <!-- <label for="book-title-search">Search</label> -->
+                <div class="valid-msg" id="valseach-msg">Fill The Input With The Correct Value</div>
+                <div class="match-search-value" id="match-search-msg">There Is No Match</div>
+                <input type="text" placeholder="search by id , book title , author" name="" id="book-title-search">
+                <button id="search-btn" >Search</button>
+            </form>
+    
+            <form class="form " action="" id="add-form">
+                <div class="id0num-msg" id="id0-msg">Id Can Not Be ( 0 )</div>
+                <div class="add-form-validat-msg" id="form-valid-msg">You Have To Fill All Inputs</div>
+                <div class="id-is-there" id="exist-id-msg" >This Id Is Existed</div>
+                <div class="id-future-msg" id="future-id-msg">You Can Not Change The Id In The Future</div>
+                <button id="close-add-form" class="close-add-form-btn">X</button>
+                <label for="book-id">Book Id</label>
+                <input type="number" min="1" name="" id="book-id">
+                <label for="book-name">Book Name</label>
+                <input  type="text" name="" id="book-name">
+                <label for="author">Author</label>
+                <input type="text" name="" id="author">
+                <label for="price">Price $</label>
+                <input type="number" name="" id="price">
+                <label for="quantity">Quantity</label>
+                <input type="number" name="" id="quantity">
+                <button class="add-book-btn" id="add-btn">Add Book</button>
+                <button class="make-change-btn" id="make-the-change">Change Book Info</button>
+            </form>
+            <table class="table" id="table">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Book Name</td>
+                        <td>Author</td>
+                        <td>Price $</td>
+                        <td>Quantity</td>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+            <div class="book-info" id="bookinfo">
+                <button class="hide-booksinfo-btn" id="closeInfo-showBooks">X</button>
+            </div>
+            <div class="reciet-div" id="reciet-div">
+                <button class="go-home-btn" id="go-home">X</button>
+                <div class="bay-form-container">
+                    <label for="confirme-id">Write The Book Id</label>
+                    <input min="1" placeholder="Right The Correct Id" type="number" id="confirme-id">
+                    <label for="quantity-number">How Much books Do You Want</label>
+                    <input type="number" min="1" id="quantity-number">
+                    <button class="buy-this" id="make-the-bill-btn">Buy Now</button>
+                </div>
+                <div class="final-info" id="last-info-container">
+                    <button class="go-home-reload" id="go-home-reload-btn">X</button>
+                    <div class="bookinfo-to-proceed" id="bookinfo-proceed-div"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
