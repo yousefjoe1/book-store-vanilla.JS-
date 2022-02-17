@@ -40,6 +40,10 @@ let futureIdMsg = document.getElementById('future-id-msg')
 
 let bookHeader = document.getElementById('books-header');
 
+let tableBooks = document.querySelector('table');
+
+let truevar;
+
 let timeoutFunc = (elem,val,number)=>{
     setTimeout(()=>{
         elem.classList.remove(val)
@@ -51,24 +55,25 @@ window.onload = ()=>{
         findForm.classList.add('hide-search-form')
     }
     if(localStorage.getItem('books')){
-        // show search form
 
         let lsArray = JSON.parse(localStorage.getItem('books'));
+        // sorting localstrage
+        let sortingarr = lsArray.sort(function(a,b){return a[0] - b[0]})
     
-        lsArray.forEach(arr => {
+        sortingarr.forEach(arr=> {
             let tr = document.createElement('tr');
             arr.map(val => {
                 let td = document.createElement('td');
                 td.textContent = val;
-                tr.appendChild(td)
+                tr.appendChild(td);
             })
-    
-            tbody.appendChild(tr)
+
+            tbody.appendChild(tr);
+
         })
 
     }else {
-    localStorage.setItem('books', JSON.stringify([]))
-
+    localStorage.setItem('books', JSON.stringify([]));
     }
 
 
@@ -77,10 +82,10 @@ window.onload = ()=>{
 
     }else {
         localStorage.setItem('users',JSON.stringify([]))
-        console.log('make users array');
     }
 
 }
+
 
 // id future msg
 let idinput = allInputs[0];
@@ -107,7 +112,7 @@ if(locStrgArry.length == 0 ){
         let arryTow = []
         for(let i = 0; i < allInputs.length ; i++){
             arryTow.push(allInputs[i].value)
-                allInputs[i].value = ''
+                allInputs[i].value = '';
             }
             booksArry.push(arryTow)
         
@@ -118,11 +123,13 @@ if(locStrgArry.length == 0 ){
                 td.textContent = val
                 tr.appendChild(td)
             })
+
             tbody.appendChild(tr)
         
-            //Local storage Function\\
+///////////////////////////////Local storage Function\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
             if(localStorage.getItem('books')){
                 let oldArry = JSON.parse(localStorage.getItem('books'))
+
                 localStorage.setItem('books',JSON.stringify([...oldArry,arryTow]))
             }else {
                 localStorage.setItem('books', JSON.stringify([]))
@@ -178,10 +185,14 @@ if(locStrgArry.length == 0 ){
                 
                     //Local storage Function\\
                     if(localStorage.getItem('books')){
-                        let oldArry = JSON.parse(localStorage.getItem('books'))
-                        localStorage.setItem('books',JSON.stringify([...oldArry,arryTow]))
+                        let oldArry = JSON.parse(localStorage.getItem('books'));
+                        let allarraystosort = [...oldArry,arryTow];
+                        // sorting after adding
+                        let sorting = allarraystosort.sort(function(a,b){return a[0] - b[0]})
+                        //
+                        localStorage.setItem('books',JSON.stringify(sorting));
                     }else {
-                        localStorage.setItem('books', JSON.stringify([]))
+                        localStorage.setItem('books', JSON.stringify([]));
                     }
 
             }else {
@@ -206,7 +217,6 @@ if(locStrgArry.length == 0 ){
         findForm.classList.add('hide-search-form')// 
     }
 })
-
 
 
 ///////////////////////// [ Searching Function ]\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -292,7 +302,6 @@ serchBtn.addEventListener('click',(e)=> {
                     findForm.classList.add('hide-search-form')
             })
             }else {
-
             }
         });
     }else {
@@ -321,7 +330,7 @@ let bookInfoFunc = (lcarr)=> {
         }
 
         // check if these inputs are valid => id || author || book name
-        if(searchvalidvalues.includes(searchInput.value) ){// search relay on id || author || book name
+        if(searchvalidvalues.includes(searchInput.value) ){// search depends on id || author || book name
             let singleBookInfo = document.createElement('div');
             singleBookInfo.className = 'single-book';
             arr.map((vl,i)=>{
@@ -347,10 +356,10 @@ let bookInfoFunc = (lcarr)=> {
                             editBtn.textContent = 'Edit';
                             singleBookInfo.appendChild(editBtn)
 
-                            // if user is admin show edit button
-                            edtiaccess(editBtn)
-                            
-                            // make the Bay btn
+                            // if user is admin show edit books button
+                            edtiaccess(editBtn)                         
+
+                            // make the Buy btn
                             let buybtn = document.createElement('button');
                             buybtn.id = 'buy-btn'
                             buybtn.className = 'buybtn'
@@ -361,12 +370,20 @@ let bookInfoFunc = (lcarr)=> {
                             })
             // apend the book info to the bookinfo container
             infoDiv.appendChild(singleBookInfo)
+        }else {
+            // show not existed value msg
+            let wrongsearchMsg = document.getElementById('wrong-search-msg');
+            wrongsearchMsg.classList.add('show-search-wrong-msg');
+            timeoutFunc(wrongsearchMsg,'show-search-wrong-msg',5000)
         }
     })
 }
 
 /////////////////////////////////////// bayFunction\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 let buyFunc = (locstarr,e) => {
+    let wrongsearchMsg = document.getElementById('wrong-search-msg');
+    wrongsearchMsg.classList.remove('show-search-wrong-msg');
+    
     let bkid = e.target.parentNode.childNodes[0].childNodes[1].textContent;// book id
 
     let singleBookInfoDiv = document.createElement('div');
@@ -567,6 +584,10 @@ buyNow.onclick = ()=> {
                 if(bookQuantity < 0){// if quantity will be less than 0
                     console.log('yes less than 0');
                     // prevent buy proccess
+                    let wrongamountdiv = document.getElementById('wrong-amount-div');
+                    wrongamountdiv.classList.add('wrongamountanime')
+                    timeoutFunc(wrongamountdiv,'wrongamountanime',4000)
+
                 }else {
 
                     // continue buy proccess
@@ -704,9 +725,16 @@ let logInBtn = document.getElementById('login-btn');
 
 
     
-let truevar;
+
 logInBtn.onclick = (e)=>{
     e.preventDefault();
+
+    deleteadminacess()
+
+    if(logInUserNameInput.value === 'admin' 
+    && logInPasswordInput.value === 'admin'){
+        // adminacess()
+    }
 
     if(logInUserNameInput.value.trim()&&logInPasswordInput.value.trim()){// validate
         // get array of users
@@ -721,13 +749,13 @@ logInBtn.onclick = (e)=>{
                 createUserContainer.style.display = 'none';
                 // asign a truevar to true
                 truevar = true;
-
                 }else if(userobj.userName === logInUserNameInput.value 
                     && userobj.passowrd === logInPasswordInput.value) {
                     storeContainer.style.display = 'block';
                     createUserContainer.style.display = 'none';
             }else {
                 console.log('user not exist');
+
             }
         });
     }
@@ -737,6 +765,64 @@ logInBtn.onclick = (e)=>{
 
 let edtiaccess = (editbtn)=>{
     if(truevar){
-        editbtn.classList.remove('edit-btn-hidden')
+        editbtn.classList.remove('edit-btn-hidden');
+
         }
 }
+
+
+
+let deleteadminacess = ()=>{
+    if(logInUserNameInput.value === 'admin' 
+&& logInPasswordInput.value === 'admin'){
+    let tablerows = document.querySelectorAll('#tbody tr');
+    let locstArray =  JSON.parse(localStorage.getItem('books'));
+
+    tablerows.forEach((row,ind)=>{
+        let deletebtn = document.createElement('button');
+        let bookidSpan = document.createElement('span');
+        bookidSpan.textContent = locstArray[ind][0];
+        
+        deletebtn.id = 'delete-book-btn';
+        deletebtn.className = 'delete-btn';
+        deletebtn.textContent = 'Delete';
+        deletebtn.appendChild(bookidSpan);
+        row.appendChild(deletebtn)
+
+    })
+
+    //////////////////////////////////////////////Delete Books Function \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    let deletebookbtn = document.querySelectorAll('#delete-book-btn');
+    deletebookbtn.forEach(button=>{
+        button.addEventListener('click',(e)=>{
+            let lsArray = JSON.parse(localStorage.getItem('books'));
+            
+            let bookId = e.target.childNodes[1].textContent;
+            let newArrAfterDelete =  lsArray.filter(array=>{
+                return array[0] !== bookId
+            })
+
+            
+            // send new array to local storage
+            let sorting = newArrAfterDelete.sort(function(a,b){return a[0] - b[0]})
+            
+            e.target.parentNode.remove()
+            localStorage.setItem('books',JSON.stringify(sorting))
+        });
+
+    })
+    deletebookbtn.forEach(button=>{
+        button.addEventListener('mouseenter',(e)=>{
+            e.target.parentNode.classList.add('red-row')
+        })
+    })
+    deletebookbtn.forEach(button=>{
+        button.addEventListener('mouseleave',(e)=>{
+            e.target.parentNode.classList.remove('red-row')
+        })
+    })
+
+}
+
+}
+

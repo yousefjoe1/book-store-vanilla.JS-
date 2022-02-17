@@ -48,6 +48,7 @@
             <form class="find-form" id="find-form">
                 <!-- <label for="book-title-search">Search</label> -->
                 <div class="valid-msg" id="valseach-msg">Fill The Input With The Correct Value</div>
+                <div class="search-wrong-val" id="wrong-search-msg">Wrong Value</div>
                 <div class="match-search-value" id="match-search-msg">There Is No Match</div>
                 <input type="text" placeholder="search by id , book title , author" name="" id="book-title-search">
                 <button id="search-btn" >Search</button>
@@ -90,7 +91,8 @@
             </div>
             <div class="reciet-div" id="reciet-div">
                 <button class="go-home-btn" id="go-home">X</button>
-                <div class="bay-form-container">
+                <div class="bay-form-container" id="buy-form">
+                    <p id="wrong-amount-div" class="wrongamountmsg">This Amount Does Not Existed</p>
                     <label for="confirme-id">Write The Book Id</label>
                     <input min="1" placeholder="Right The Correct Id" type="number" id="confirme-id">
                     <label for="quantity-number">How Much books Do You Want</label>
